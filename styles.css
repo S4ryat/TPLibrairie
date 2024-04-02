@@ -1,0 +1,171 @@
+/* Styles de base */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+/* Navbar */
+.header {
+    background-color: #B0E0E6;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #3a617a;
+}
+
+.search-container input {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+/* Section de sélection de livres */
+.accueil-section {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden; /* Empêcher le défilement horizontal de créer une barre de défilement */
+    position: relative; /* Utilisé pour positionner les flèches */
+}
+
+.scrollable-books {
+    display: flex;
+    overflow-x: hidden; /* Empêcher le défilement horizontal */
+    scroll-behavior: smooth; /* Animation de glissement */
+    gap: 20px; /* Ajouter de l'espace entre les livres */
+}
+
+.book-card {
+    flex-shrink: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc((100% - 40px) / 3); /* Ajustez la largeur des cartes de livres pour trois par slide */
+    min-width: 100px; /* Largeur minimale des cartes de livres */
+    max-width: 200px; /* Largeur maximale des cartes de livres */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px; /* Ajustez la taille de la police */
+    overflow: hidden; /* Empêcher le texte de dépasser des boîtes des livres */
+}
+
+.book-details {
+    text-align: center;
+    padding: 5px;
+}
+
+.scroll-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scroll-buttons button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#scroll-left {
+    left: 0;
+}
+
+#scroll-right {
+    right: 0;
+}
+
+/* Boîte du formulaire d'inscription */
+.inscription-box {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 auto; /* Centre la boîte horizontalement */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: appear 0.5s ease; /* Animation d'apparition */
+    margin-bottom: 50px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.inscription-box form .form-group {
+    margin-bottom: 20px;
+}
+
+.inscription-box form input[type="text"],
+.inscription-box form input[type="email"],
+.inscription-box form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.inscription-box form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #87CEFA;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inscription-box form button:hover {
+    background-color: #add8e6;
+}
+
+/* Footer */
+footer {
+    background-color: #B0E0E6;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
