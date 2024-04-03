@@ -1,171 +1,266 @@
+:root {
+    --primary-color: #B0E0E6;
+    --secondary-color: #3a617a;
+    --text-color: #fff;
+    --background-color: #f8f9fa;
+    --border-color: #ccc;
+    --button-color: #4c6baf;
+}
+
 /* Styles de base */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background-color: var(--primary-color);
     text-align: center;
+    position: relative; /* Add this property to the body */
 }
 
 /* Navbar */
 .header {
-    background-color: #B0E0E6;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: var(--primary-color);
     padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    position: absolute; /* Add this property to the header */
+    top: 0; /* Move the header to the top of the page */
+    width: 100%; /* Make the header 100% wide */
 }
 
 .logo {
     margin: 0;
-    color: #fff;
+    color: var(--text-color);
+    padding-left: 20px; /* Add some left padding to the logo */
+    font-size: 50px;
 }
 
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center; /* Center the navigation links horizontally */
 }
 
 nav ul li {
-    display: inline-block;
     margin-right: 20px;
+    padding-right: 20px;
+    transition: color 0.3s ease;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
-    transition: color 0.3s ease;
+    color: var(--text-color);
+    font-size: 20px;
 }
 
 nav ul li a:hover {
-    color: #3a617a;
+    color: var(--secondary-color);
 }
 
-.search-container input {
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
+.home-section {
+    padding: 100px;
+    background-color: var(--primary-color);
 }
 
-/* Section de sélection de livres */
-.accueil-section {
-    background-color: #f0f0f0;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    overflow: hidden; /* Empêcher le défilement horizontal de créer une barre de défilement */
-    position: relative; /* Utilisé pour positionner les flèches */
+.home-section h2 {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.scrollable-books {
-    display: flex;
-    overflow-x: hidden; /* Empêcher le défilement horizontal */
-    scroll-behavior: smooth; /* Animation de glissement */
-    gap: 20px; /* Ajouter de l'espace entre les livres */
-}
+@media (max-width: 600px) {
+.header {
+        display: block;
+    }
 
-.book-card {
-    flex-shrink: 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: calc((100% - 40px) / 3); /* Ajustez la largeur des cartes de livres pour trois par slide */
-    min-width: 100px; /* Largeur minimale des cartes de livres */
-    max-width: 200px; /* Largeur maximale des cartes de livres */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px; /* Ajustez la taille de la police */
-    overflow: hidden; /* Empêcher le texte de dépasser des boîtes des livres */
-}
+    nav ul {
+        display: flex;
+        flex-direction: column;
+    }
 
-.book-details {
+    nav ul li {
+        margin-right: 0;
+    }
+
+    nav ul li a {
+        padding: 10px 0;
+    }
+}
+/* Add this to your styles.css file */
+
+.login-section {
+    padding: 100px;
+    background-color: var(--background-color);
     text-align: center;
-    padding: 5px;
 }
 
-.scroll-buttons {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.login-section h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.scroll-buttons button {
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    margin: 0 5px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.login-section form {
+    margin: 50px 0;
 }
 
-#scroll-left {
-    left: 0;
-}
-
-#scroll-right {
-    right: 0;
-}
-
-/* Boîte du formulaire d'inscription */
-.inscription-box {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    margin: 0 auto; /* Centre la boîte horizontalement */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: appear 0.5s ease; /* Animation d'apparition */
-    margin-bottom: 50px;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.inscription-box form .form-group {
-    margin-bottom: 20px;
-}
-
-.inscription-box form input[type="text"],
-.inscription-box form input[type="email"],
-.inscription-box form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+.login-section form input[type="text"],
+.login-section form input[type="password"] {
+    border: 1px solid var(--border-color);
     border-radius: 5px;
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 300px;
 }
 
-.inscription-box form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #87CEFA;
-    color: #fff;
+.login-section form button[type="submit"] {
+    background-color: var(--primary-color);
     border: none;
+    color: var(--text-color);
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.inscription-box form button:hover {
-    background-color: #add8e6;
+.login-section form button[type="submit"]:hover {
+    background-color: var(--secondary-color);
 }
 
-/* Footer */
-footer {
-    background-color: #B0E0E6;
-    color: #fff;
+/* Add this to your styles.css file */
+
+.create-account-section {
+    padding: 100px;
+    background-color: var(--background-color);
     text-align: center;
+}
+
+.create-account-section h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.create-account-section form {
+    margin: 50px 0;
+}
+
+.create-account-section form input[type="text"],
+.create-account-section form input[type="email"],
+.create-account-section form input[type="password"] {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    display: block;
+    margin: 10px auto;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    width: 300px;
+}
+
+.create-account-section form button[type="submit"] {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-account-section form button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+.create-account-section form p {
+    margin: 20px 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.create-account-section form p a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.create-account-section form p a:hover {
+    color: var(--primary-color);
+}
+
+.quote-container {
+    background-color: var(--primary-color);
+    padding: 50px;
+    font-family: 'Apple Chancery', cursive; /* Add this property to the quote-container */
+}
+
+.quote-container h2 {
+    font-size: 2rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+footer {
+    background-color: var(--primary-color);
+    padding: 50px;
+    margin-top: 50px;
+    background: linear-gradient(to bottom, var(--primary-color) 0%, rgba(255, 255, 255, 100%) 100%);
+}
+
+nav[data-is-logged-in='false'].logged-in-only,
+nav[data-is-logged-in='true'].logged-out-only {
+    display: none;
+}
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.page-content {
+    padding: 2rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Styles spécifiques aux pages */
+.favorites-section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.favorite-item {
+    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur et la hauteur */
+    width: 31%; /* 31% pour permettre un espacement entre les éléments */
+    margin: 1%;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+}
+
+.favorite-title {
+    margin: 0 0 0.5rem 0;
+}
+
+.user-info-box {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.user-info-box h3 {
+    margin: 0 0 1rem 0;
 }

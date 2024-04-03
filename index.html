@@ -1,97 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYBRIO</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <script src="selection.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="logged.js" defer></script>
     <script src="recherche.js" defer></script>
-</head>
-<body>
-
-<header>
-    <div class="header">
+  </head>
+  <body>
+    <header>
+      <div data-is-logged-in="false" class="header">
         <h1 class="logo">LYBRIO</h1>
         <nav>
-            <ul>
-                <li><a href="#" class="nav-link">Accueil</a></li>
-                <li><a href="#" class="nav-link">A Propos de nous</a></li>
-                <li><a href="#" class="nav-link">Inscription</a></li>
-                <li><a href="#" class="nav-link">Contacter nous</a></li>
-                <li class="search-container">
-                    <input
-                            type="text"
-                            name="search"
-                            id="search"
-                            placeholder="Cherche le titre de ton livre"
-                    />
-                    <button id="searchButton">Rechercher</button>
-                </li>
-            </ul>
+          <ul>
+            <li><a href="index.html" class="nav-link">Accueil</a></li>
+            <li><a href="login.html" class="nav-link">Connexion</a></li>
+          </ul>
         </nav>
+      </div>
+    </header>
+
+    <section class="home-section">
+      <h2>Bienvenue chez Lybrio</h2>
+      <div class="quote-container">
+      <h2>Bibliothèque Gratuite, Lecture Libre</h2>
     </div>
-</header>
+    </section>
 
-<section class="accueil-section">
-    <h2>Notre Sélection</h2>
-    <br>
-    <div class="scrollable-books">
-        <!-- Contenu de la sélection de livres avec des flèches de défilement -->
-        <!-- Insérez ici des divs pour représenter chaque livre -->
-        <!-- Exemple : -->
-        <!-- <div class="book-card">
-            <img src="https://via.placeholder.com/150" alt="Livre 1">
-            <div class="book-details">
-                <h3>Livre 1</h3>
-                <p>Auteur(s): Auteur Factice</p>
-            </div>
-        </div> -->
-    </div>
-    <div class="scroll-buttons">
-        <button id="scroll-left">&#10094;</button>
-        <button id="scroll-right">&#10095;</button>
-    </div>
-</section>
 
-<div class="inscription-box">
-    <h2>Inscription</h2>
-    <form action="inscription.php" method="POST">
-        <div class="form-group">
-            <label for="username">Nom d'utilisateur :</label>
-            <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    required
-            />
-        </div>
-        <div class="form-group">
-            <label for="email">Adresse email :</label>
-            <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-            />
-        </div>
-        <div class="form-group">
-            <label for="password">Mot de passe :</label>
-            <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-            />
-        </div>
-        <button type="submit">S'inscrire</button>
-    </form>
-</div>
-
-<footer>
-    <p>&copy; 2024 LYBRIO</p>
-</footer>
-
-</body>
+    <footer>
+      <p>&copy; 2024 LYBRIO</p>
+    </footer>
+  </body>
 </html>

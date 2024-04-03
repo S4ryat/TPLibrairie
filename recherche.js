@@ -1,26 +1,36 @@
-// rechercheLivres.js
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', handleSearchFormSubmit);
+    } else {
+        console.error('Formulaire de recherche non trouvé.');
+    }
+});
 
-// Fonction pour rechercher les livres en fonction du terme de recherche
-async function searchBooks(searchTerm) {
-    try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&langRestrict=fr`);
-        const data = await response.json();
-        return data.items;
-    } catch (error) {
-        console.error('Une erreur s\'est produite lors de la recherche des livres:', error);
-        return [];
+async function handleSearchFormSubmit(event) {
+    event.preventDefault(); // Empêcher le rechargement de la page
+    const searchTerm = document.getElementById('search').value.trim();
+    if (searchTerm !== '') {
+        try {
+            const books = await searchBooks(searchTerm);
+            displayBooks(books);
+        } catch (error) {
+            console.error('Une erreur s\'est produite lors de la recherche des livres:', error);
+        }
+    } else {
+        console.log('Veuillez entrer un terme de recherche valide.');
     }
 }
 
-// Fonction pour gérer la soumission du formulaire de recherche
-async function handleSearchFormSubmit(event) {
-    event.preventDefault(); // Empêcher le rechargement de la page
-    const searchTerm = document.getElementById('search').value;
-    const books = await searchBooks(searchTerm);
-    const scrollableBooks = document.querySelector('.scrollable-books');
-    // Supprimer le contenu actuel
-    scrollableBooks.innerHTML = '';
-    // Afficher les livres
+async function searchBooks(searchTerm) {
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&langRestrict=fr`);
+    const data = await response.json();
+    return data.items;
+}
+
+function displayBooks(books) {
+    const livresListe = document.getElementById('livresListe');
+    livresListe.innerHTML = ''; // Effacer le contenu précédent
     books.forEach(book => {
         const bookInfo = {
             title: book.volumeInfo.title,
@@ -28,19 +38,31 @@ async function handleSearchFormSubmit(event) {
             imageUrl: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'
         };
         const bookElement = createBookElement(bookInfo);
-        scrollableBooks.appendChild(bookElement);
+        livresListe.appendChild(bookElement);
     });
-    hideNonSearchSections();
 }
 
-// Écouter l'événement de soumission du formulaire de recherche
-const searchForm = document.querySelector('form');
-searchForm.addEventListener('submit', handleSearchFormSubmit);
+function createBookElement(bookInfo) {
+    const bookCard = document.createElement('div');
+    bookCard.classList.add('book-card');
 
-// Fonction pour cacher les sections autres que la section de recherche
-function hideNonSearchSections() {
-    const sectionsToHide = document.querySelectorAll('.accueil-section, .inscription-box, footer');
-    sectionsToHide.forEach(section => {
-        section.style.display = 'none';
-    });
+    const img = document.createElement('img');
+    img.src = bookInfo.imageUrl;
+    img.alt = bookInfo.title;
+    bookCard.appendChild(img);
+
+    const bookDetails = document.createElement('div');
+    bookDetails.classList.add('book-details');
+
+    const title = document.createElement('h3');
+    title.textContent = bookInfo.title;
+    bookDetails.appendChild(title);
+
+    const author = document.createElement('p');
+    author.textContent = `Auteur(s): ${bookInfo.author}`;
+    bookDetails.appendChild(author);
+
+    bookCard.appendChild(bookDetails);
+
+    return bookCard;
 }
